@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.431e2e80.css",
-    "main.js": "/static/js/main.9f5b7776.js",
+    "main.css": "/static/css/main.4234a7b1.css",
+    "main.js": "/static/js/main.21107b6c.js",
     "static/media/veritran.png": "/static/media/veritran.d76e8bac113daef37805.png",
     "index.html": "/index.html",
-    "main.431e2e80.css.map": "/static/css/main.431e2e80.css.map",
-    "main.9f5b7776.js.map": "/static/js/main.9f5b7776.js.map"
+    "main.4234a7b1.css.map": "/static/css/main.4234a7b1.css.map",
+    "main.21107b6c.js.map": "/static/js/main.21107b6c.js.map"
   },
   "entrypoints": [
-    "static/css/main.431e2e80.css",
-    "static/js/main.9f5b7776.js"
+    "static/css/main.4234a7b1.css",
+    "static/js/main.21107b6c.js"
   ]
 }
