@@ -10,6 +10,7 @@
 .greetings-container{
     display: flex;
     flex-direction: column;
+    margin-bottom: 10vh;
 }
 .greetings-title{
     font-family: "Cuprum", sans-serif;
