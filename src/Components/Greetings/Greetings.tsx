@@ -4,7 +4,7 @@ function Greetings(){
         <div className="Greetings">
             <div className="greetings-container">
                 <div className="greetings-title">
-                    HI I'M&nbsp;
+                    HI I'M
                 </div>
                 <div className="greetings-title">
                     SEBASTIAN

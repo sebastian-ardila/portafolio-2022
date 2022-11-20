@@ -4,21 +4,24 @@
     justify-content: center;
     flex-wrap: wrap;
     padding: 20px;
-    margin: 10px 30px 30px 30px;
+    margin: 10px 0px 30px 0px;
     background: 
         linear-gradient(217deg, rgb(255 255 255 / 80%), rgb(255 0 0 / 6%) 70.71%), 
         linear-gradient(127deg, rgb(241 221 235 / 80%), rgb(86 209 86 / 16%) 70.71%), 
         linear-gradient(336deg, rgb(255 255 255 / 80%), rgb(68 68 168 / 29%) 70.71%);
-    width: 50%;
-    min-height: 50%;
+    width: 70%;
+    min-height: 70%;
     border-radius: 20px;
 }
 
 .job-primary{
     background-color: rgba(255, 255, 255, 0.93);
     border-radius: 10px;
+    margin: 15px;   
+}
+
+.job-padding{
     padding: 20px;
-    margin: 15px;
 }
 
 .job-card-body{

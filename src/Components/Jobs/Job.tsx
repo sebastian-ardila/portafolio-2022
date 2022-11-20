@@ -1,5 +1,6 @@
 import './job.css';
 
+
 interface DescriptionJob{
     title: string;
     dateFrom: string;
@@ -11,13 +12,12 @@ interface JobInterface{
     width: string;
     height: string;
     title: string;
-    src: string;
-    description: DescriptionJob[];
+    imgSrc: string;
 };
-function Job({type, width, height, title, src, description}: JobInterface){
+function Job({type, width, height, title, imgSrc}: JobInterface){
 
     const imgStyle = {
-        'backgroundImage': `url(${src})`,
+        'backgroundImage': `url(${imgSrc})`,
         'backgroundSize': '40px 40px',
         'width': '40px',
         'height': '40px',
@@ -28,20 +28,20 @@ function Job({type, width, height, title, src, description}: JobInterface){
 
     return(
         <div 
-            className={type} 
-            style={{width: width, height: height}}>
-            <div className={"job-card-title"}>
-                {title}
-            </div>
-            <div className="job-card-body">
-                <div style={imgStyle}/>   
-                <div style={{"width": "60%"}}>
-                    <div className="job-fakeDescription job-fakeDescription-first"/>
-                    <div className="job-fakeDescription job-fakeDescription-second"/>
+        className={type} 
+        style={{width: width, height: height}}>
+            <div className="job-padding">
+                <div className={"job-card-title"}>
+                    {title}
+                </div>
+                <div className="job-card-body">
+                    <div style={imgStyle}/>   
+                    <div style={{"width": "60%"}}>
+                        <div className="job-fakeDescription job-fakeDescription-first"/>
+                        <div className="job-fakeDescription job-fakeDescription-second"/>
+                    </div>
                 </div>
             </div>
-            
-
         </div>
     );
 };

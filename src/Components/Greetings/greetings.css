@@ -16,7 +16,7 @@
     font-family: "Cuprum", sans-serif;
     color: grey;
     font-weight: 900;
-    font-size: 3em;
+    font-size: 7vmax;
     background: linear-gradient(217deg, rgb(58 80 136 / 65%), rgb(219 219 235) 70.71%);
     -webkit-background-clip: text;
     color: transparent;
