@@ -6,14 +6,14 @@ interface AnimationProps{
   type?: string;
 };
 
-interface ModalOptions {
-  modalClosedBounds: BoundingProps;
-  modalOpenedBounds: BoundingProps;
-  animationOptions: AnimationProps;
-  borderStyles?: Partial<CSSStyleDeclaration>;
-  containerStyles?: Partial<CSSStyleDeclaration>;
-  containerContentComponent?: {};
-  closeOptions?: CloseOptions;
+interface BoundingOptions {
+  border: BoundingProps;
+  container: BoundingProps;
+};
+
+interface BoundingModel {
+  initBoundings: BoundingOptions;
+  endBoundings: BoundingOptions;
 };
 
 interface CloseOptions {
@@ -22,17 +22,11 @@ interface CloseOptions {
   onCloseButton?: {};
 };
 
-type Styles ={
-  initStyles: Partial<CSSStyleDeclaration>;
-  endStyles: Partial<CSSStyleDeclaration>;
-}
 
 type ModalProps = {
   children: React.ReactElement[];
   id: string;
-  border?: Styles;
-  container?: Styles;
-  modalOptions?: ModalOptions;
+  boundings?: BoundingModel;
   closeOptions?: CloseOptions;
 };
 
@@ -48,17 +42,19 @@ interface ExpandibleContentProps{
   show: boolean;
   backgroundColor: string;
 }
+
 interface BoundingProps{
-  top: number;
-  left: number;
-  width: number;
-  height: number;
+  top: string;
+  left: string;
+  width: string;
+  height: string;
 }
 
 
 interface GlobalStylesProps{
-  border?: Partial<CSSStyleDeclaration>;
-  container?: Partial<CSSStyleDeclaration>;
+  backgroundBorder: string;
+  border?: BoundingProps;
+  container?: BoundingProps;
   id: string;
   show: boolean;
 }
@@ -78,7 +74,7 @@ const GlobalStyles = createGlobalStyle<GlobalStylesProps>`
     }
     .modal-effect-${props => props.id}{
       background-color: ${props => props.show ? 
-        props.border?.backgroundColor: ""};
+        props?.backgroundBorder: ""};
       position: fixed;
       display: flex;
       top: ${props => props.border?.top || "0vh"};
@@ -145,16 +141,13 @@ const ModalContent = styled.div`
   align-items: center;
 `
 
-//--------
-interface CurrentStyles{
-  border: Partial<CSSStyleDeclaration>;
-  container: Partial<CSSStyleDeclaration>;
-}
-
-const Modal = ({children, id, modalOptions}: ModalProps) => {
+const Modal = ({children, id, boundings}: ModalProps) => {
   const getModalWrapper = (id:string)=> document.getElementById(id) as HTMLElement || document.createElement('div');
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [styles, setStyles] = useState<CurrentStyles>({border:{}, container: {}});
+  const [styles, setStyles] = useState<BoundingOptions>({
+    border:{top:'',left:'',width:'',height:''}, 
+    container:{top:'',left:'',width:'',height:''}
+  });
   
 
   const modalManager = ()=>{
@@ -165,49 +158,24 @@ const Modal = ({children, id, modalOptions}: ModalProps) => {
     if(showModal === true){
       const expandibleItem = document.getElementById("expandible-wrapper-"+id);
       expandibleItem?.classList.add("transiction-click-"+id);
-
-      //end styles
-      setStyles({
-        border: {
-          top: '0vh',
-          left: '0vw',
-          width: '100%',
-          height: '100%'
-        },
-        container: {
-          top: '100%',
-          left: '100%',
-          width: '100%',
-          height: '100%'
-        }
-      });
+      if(boundings?.endBoundings){
+        const endStyles = boundings?.endBoundings;
+        setStyles(endStyles);
+      }
     }else{
-
-      //init styles
-      setStyles({
-        border: {
-          top: '100vh',
-          left: '0vw',
-          width: '100%',
-          height: '100%'
-        },
-        container: {
-          top: '100%',
-          left: '100%',
-          width: '100%',
-          height: '100%'
-        }
-      });
-      const expandibleComponent: HTMLElement = getModalWrapper("expandible-wrapper-"+id); 
-      const bodyElement = document.querySelector('root');
-      bodyElement?.appendChild(expandibleComponent);  
-
+      if(boundings?.initBoundings){
+        const initStyles = boundings?.initBoundings;
+        setStyles(initStyles);
+        const expandibleComponent: HTMLElement = getModalWrapper("expandible-wrapper-"+id); 
+        const bodyElement = document.querySelector('root');
+        bodyElement?.appendChild(expandibleComponent);  
+      }
     }
   }, [showModal, id]);
   
   return (
     <>
-      <GlobalStyles id={id} show={showModal} border={styles.border} container={styles.container}/>
+      <GlobalStyles id={id} show={showModal} border={styles.border} container={styles.container} backgroundBorder={'gray'}/>
       <TargetModal onClick={modalManager} show={showModal} id={"target-"+id}>
         {children[0]}
       </TargetModal>

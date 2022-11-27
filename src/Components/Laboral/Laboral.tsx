@@ -6,6 +6,42 @@ import { laboralModel } from "./laboralModel";
 
 
 function Laboral(){
+
+    const initBoundings = {
+      border: {
+        top: '100vh',
+        left: '0vw',
+        width: '100%',
+        height: '100%'
+      },
+      container: {
+        top: '100%',
+        left: '100%',
+        width: '100%',
+        height: '100%'
+      }
+    };
+
+    const endBoundings = {
+      border: {
+        top: '0vh',
+        left: '0vw',
+        width: '100%',
+        height: '100%'
+      },
+      container: {
+        top: '100%',
+        left: '100%',
+        width: '100%',
+        height: '100%'
+      }
+    };
+
+    const boundings = {
+      initBoundings,
+      endBoundings
+    };
+
     return(
         <div className="laboral">
             <div className="main-title">Laboral</div>
@@ -14,8 +50,7 @@ function Laboral(){
               <Modal
                 key={keyLaboral}
                 id={laboral.styles.modal.id}
-                border={laboral.styles.modal.border}
-                container={laboral.styles.modal.container}
+                boundings={boundings}
               >
                 <Job 
                   type={laboral.styles.job.type}
@@ -65,14 +100,14 @@ interface CustomTextProps{
 }
 
 const CustomText = styled.h1<CustomTextProps>`
-font-family: "Cuprum", sans-serif;
-font-size: ${props=> props.size};
-font-weight: ${props => props.weight};
-background: ${props => props.color}; || black;
-margin: ${props => props.margin}; || 0;
+  font-family: "Cuprum", sans-serif;
+  font-size: ${props=> props.size};
+  font-weight: ${props => props.weight};
+  background: ${props => props.color}; || black;
+  margin: ${props => props.margin}; || 0;
 
--webkit-background-clip: text;
-color: transparent;
+  -webkit-background-clip: text;
+  color: transparent;
 `;
 
 interface experience{

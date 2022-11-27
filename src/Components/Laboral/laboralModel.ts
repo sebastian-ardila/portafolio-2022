@@ -97,7 +97,7 @@ export const laboralModel = [
             },
             job: {
                 type: "job-primary",
-                width: "162px",
+                width: "220px",
                 height: "fit-content",
                 title: "VeriTran",
                 imgSrc: veritranImage                
@@ -184,7 +184,7 @@ export const laboralModel = [
             },
             job: {
                 type: "job-primary",
-                width: "162px",
+                width: "220px",
                 height: "fit-content",
                 title: "Onyx Soft S.A.S",
                 imgSrc: onyxSoftImage                

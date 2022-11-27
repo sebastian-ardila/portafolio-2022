@@ -13,7 +13,7 @@
     font-weight: 800;
     font-size: 16vmin;
     color: #d7e6df;
-    background: linear-gradient(217deg, rgb(214 242 229), rgb(224 226 245) 70.71%), linear-gradient(127deg, rgb(169 255 212 / 80%), #21e080 70.71%), linear-gradient(336deg, rgb(209 121 121 / 59%), rgb(223 19 115) 70.71%);
+    background: linear-gradient(217deg, rgb(155 208 167 / 65%), rgb(173 158 158) 70.71%);
     -webkit-background-clip: text;
     color: transparent;
 }
