@@ -85,7 +85,7 @@ const CustomModalContentBox = styled.div<CustomModalContentBoxProps>`
   overflow: auto;
 `;
 
-const CustomTitle = styled.div`
+const CustomContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -99,12 +99,35 @@ interface CustomTextProps{
   margin?: string;
 }
 
-const CustomText = styled.h1<CustomTextProps>`
+const CustomTitle = styled.h1<CustomTextProps>`
   font-family: "Cuprum", sans-serif;
   font-size: ${props=> props.size};
   font-weight: ${props => props.weight};
-  background: ${props => props.color}; || black;
-  margin: ${props => props.margin}; || 0;
+  background: ${props => props.color || 'black'};
+  margin: ${props => props.margin || 0};
+
+  -webkit-background-clip: text;
+  color: transparent;
+`;
+
+const CustomSubtitle = styled.h2<CustomTextProps>`
+font-family: "Cuprum", sans-serif;
+font-size: ${props=> props.size};
+font-weight: ${props => props.weight};
+background: ${props => props.color || 'black'};
+margin: ${props => props.margin || 0};
+
+-webkit-background-clip: text;
+color: transparent;
+`;
+
+
+const CustomText = styled.p<CustomTextProps>`
+  font-family: "Cuprum", sans-serif;
+  font-size: ${props=> props.size};
+  font-weight: ${props => props.weight};
+  background: ${props => props.color || 'black'};
+  margin: ${props => props.margin || 0};
 
   -webkit-background-clip: text;
   color: transparent;
@@ -125,26 +148,26 @@ function CustomModalContent({companyName, experience}: CustomModalContentProps){
   return(
     <>  
       <CustomModalContentBox>
-        <CustomTitle>
-          <CustomText 
+        <CustomContainer>
+          <CustomTitle
             size={"3em"} 
             color={"linear-gradient(217deg, rgb(0 0 0), rgb(255 238 238) 70.71%), linear-gradient(127deg, rgb(169 255 212 / 80%), #21e080 70.71%), linear-gradient(336deg, rgb(209 121 121 / 59%), rgb(223 19 115) 70.71%)"}
             weight={"800"}>
             {companyName}
-          </CustomText>
+          </CustomTitle>
           {experience.map((job, keyExperience)=>(
               <div key={keyExperience}>
-                <CustomText 
+                <CustomSubtitle 
                   size={"2em"}
                   color={"gray"}
                   weight={"800"}>
                     {job.subtitle}
-                </CustomText>
+                </CustomSubtitle>
                 <h3>{job.date}</h3>
                 <Description descriptions={job.descriptions}/>
               </div>
           ))}
-        </CustomTitle>
+        </CustomContainer>
       </CustomModalContentBox>
     </>
   )
